@@ -25,3 +25,19 @@ console.log(output);
 // for(let i=0;i<y.length;i++){
 //     console.log(y[i]);
 // }
+
+
+let str = "karunya gupta persuing bE cse form chitkara university";
+let arr = str.split(" ");
+let result = [];
+
+for (let i = 0; i < arr.length; i++) {
+  let firstAlphabet = arr[i][0].toUpperCase();
+  let lastAlphabet = arr[i].slice(1, arr[i].length).toLowerCase();
+  result.push(firstAlphabet + lastAlphabet);
+}
+
+console.log(result);
+
+let finalResult = result.join(" ");
+console.log(finalResult);
