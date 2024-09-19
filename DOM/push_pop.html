@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Push_Pop</title>
+</head>
+<body>
+    <h1 id="textarea">Hello Janta</h1>
+    <input type="text" id="text">
+    <button id="push-button" onclick="push()">Push</button>
+    <button id="pop-button" onclick="pop()">Pop</button>
+    <script>
+        // this code is not ready yet 
+        let arr = localStorage.getItem('arr') ? localStorage.getItem('arr').split(" , ") : [];
+        
+        function getArr(){
+            document.querySelector('#textarea').innerHTML = arr.join(", ");
+            save();
+        }
+        getArr();
+
+        function push(){
+            let text = document.querySelector("#text").value;
+            arr.push(text);
+            save();
+            getArr();
+        }
+
+        function pop(){
+            if(arr.length > 0){
+                arr.pop();
+                save();
+                getArr();
+            }
+        }
+
+        function save(){
+            localStorage.setItem('arr', arr.join(", "));
+        }
+    </script>
+    
+</body>
+</html>
