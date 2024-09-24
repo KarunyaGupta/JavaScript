@@ -9,3 +9,4 @@ let time = 5;
 let n = 12;  
 let finalAmount = CompoundInterest(principal, rate, time, n);
 console.log(`The final amount after ${time} years is: $${finalAmount.toFixed(2)}`);
+
