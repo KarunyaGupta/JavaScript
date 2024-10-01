@@ -1,16 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
+    <title>User Management System</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <h1>User Management System</h1>
+    <form>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password"><br><br>
+        <input type="button" id="register-button" value="Register" onclick="register()">
+        <input type="button" value="Login" onclick="login()">
+    </form>
+
+    <h2>User List</h2>
+    <table id="user-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="user-table-body">
+            <!-- user list will be generated here -->
+        </tbody>
+    </table>
+
+    <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
-<script>
-    getUsers();
-</script>
 </html>
