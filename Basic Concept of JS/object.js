@@ -3,8 +3,9 @@ const object1={
     age:30,
     occupation:"Engineer"
 }
-let name = object1.name;
-console.log(name);
+// let name = object1.name;
+console.log(object1.name);
+console.log(object1["age"]); // have a both way 
 
 
 let a=2;

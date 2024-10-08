@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age"><br><br>
+        <label for="gender">Gender:</label>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label>
+        <input type="radio" id="other" name="gender" value="other">
+        <label for="other">Other</label><br><br>
+        <label for="subject">Subject:</label>
+        <select id="subject" name="subject">
+          <option value="Math">Math</option>
+          <option value="Science">Science</option>
+          <option value="English">English</option>
+          <option value="History">History</option>
+        </select><br><br>
+        <button id="databtn">Submit</button>
+        <button id="getData">GetData</button>
+    </form>
+
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Subject</th>
+            </tr>
+        </thead>
+        <tbody id="dataTableBody">
+        </tbody>
+    </table>
+
+    <script>
+        const databtn = document.querySelector('#databtn');
+const getDataBtn = document.querySelector('#getData');
+let dataArray = [];
+
+function convertDatatoObj(event){
+    event.preventDefault();
+    const name = document.querySelector('#name').value;
+    const age = document.querySelector('#age').value;
+    let gender;
+    if (document.querySelector('#male').checked) {
+        gender = 'male';
+    } else if (document.querySelector('#female').checked) {
+        gender = 'female';
+    } else {
+        gender = 'other';
+    }
+    const subject = document.querySelector('#subject').value;
+    const data = {
+        name: name,
+        age: age,
+        gender: gender,
+        subject: subject
+    }
+    dataArray.push(data);
+    console.log(dataArray);
+    alert("Data saved successfully!");
+    return false;
+}
+
+function printDataToTable() {
+    const tableBody = document.querySelector('#dataTableBody');
+    tableBody.innerHTML = '';
+    dataArray.forEach((data) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${data.name}</td>
+            <td>${data.age}</td>
+            <td>${data.gender}</td>
+            <td>${data.subject}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+
+databtn.addEventListener("click", convertDatatoObj);
+
+getDataBtn.addEventListener("click", function() {
+    printDataToTable();
+    this.disabled = true; // disable the button after clicking
+});
+    </script>
+</body>
+</html>
