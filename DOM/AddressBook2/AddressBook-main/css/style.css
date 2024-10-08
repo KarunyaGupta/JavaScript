@@ -2,13 +2,13 @@ body{
   margin: 0;
   padding: 0;
   font-family: "Lato", sans-serif;
-  background-image: url('../images/loginbg.jpg');
+  /* background-image: url('../images/loginbg.jpg'); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   opacity: 1.5;
-  color:white;
+  /* color:white; */
 
 }
 
@@ -30,7 +30,7 @@ header {
   height: 110px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  color: white;
+  /* color: white; */
   text-align: center;
 }
 
@@ -63,24 +63,18 @@ nav {
 .contact h4 {
   font-size: 18px;
   font-weight: bold;
-  border-bottom: #cccccc solid 1px;
+  /* border-bottom: #cccccc solid 1px; */
   margin: 0;
 }
 
 .contact .new-contact,
 .contact .no-contact-msg {
   padding: 8px;
-  border: solid 2px white;
+  border: solid 2px black;
   border-radius: 20px;
   border-top: none;
   height: 90px;
-  color: white;
-}
-
-.contact .new-contact:hover,
-.contact .no-contact-msg:hover {
-  background-color: #cee7f2;
-  color: black;
+  /* color: black; */
 }
 
 
@@ -105,7 +99,7 @@ nav {
   box-shadow: 7px -7px 12px 1px #a6a6a6, -7px 7px 12px 2px #a6a6a6;
   /* border:2px solid black; */
   border-radius: 20px;
-  background-color: white;
+  background-color: wheat;
   color:black;
 }
 
