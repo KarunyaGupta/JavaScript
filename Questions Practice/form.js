@@ -1,24 +1,50 @@
-const form = document.getElementById('myForm');
+const databtn = document.querySelector('#databtn');
+const getDataBtn = document.querySelector('#getData');
+let dataArray = [];
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const formData = new FormData(form);
-  const jsonData = {};
-  for (const [key, value] of formData) {
-    jsonData[key] = value;
-  }
-  const jsonObject = JSON.stringify(jsonData);
-  console.log(jsonObject);
-  // Push the JSON object to your desired storage or API
-  // For example, using the Fetch API:
-  fetch('/api/formData', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: jsonObject
-  })
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error(error));
+function convertDatatoObj(event){
+    event.preventDefault();
+    const name = document.querySelector('#name').value;
+    const age = document.querySelector('#age').value;
+    let gender;
+    if (document.querySelector('#male').checked) {
+        gender = 'male';
+    } else if (document.querySelector('#female').checked) {
+        gender = 'female';
+    } else {
+        gender = 'other';
+    }
+    const subject = document.querySelector('#subject').value;
+    const data = {
+        name: name,
+        age: age,
+        gender: gender,
+        subject: subject
+    }
+    dataArray.push(data);
+    console.log(dataArray);
+    alert("Data saved successfully!");
+    return false;
+}
+
+function printDataToTable() {
+    const tableBody = document.querySelector('#dataTableBody');
+    tableBody.innerHTML = '';
+    dataArray.forEach((data) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${data.name}</td>
+            <td>${data.age}</td>
+            <td>${data.gender}</td>
+            <td>${data.subject}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+
+databtn.addEventListener("click", convertDatatoObj);
+
+getDataBtn.addEventListener("click", function() {
+    printDataToTable();
+    this.disabled = true; // disable the button after clicking
 });
