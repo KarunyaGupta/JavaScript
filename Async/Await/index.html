@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // asyn function always return promise
+    // await only work inside async function
+    async function myfunction(){
+        let delhi= new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve("27 deg");
+            }, 1000)
+        })
+        let banglore= new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve("21 deg");
+            }, 5000)
+        })
+        // delhi.then(alert);
+        // banglore.then(alert);
+        console.log("Fetcing Delhi Weather please wait ....");
+        let delhiw= await delhi;
+        console.log("Fetched delhi weather "+delhiw);
+        console.log("Fetcing Banglore Weather please wait ....");
+        let banglorew= await banglore;
+        console.log("Fetched banglore weather "+banglorew);
+        return [delhiw,banglorew];
+    }
+    myfunction();
+    // console.log("welcome to control room"); 
+    let a = myfunction()
+    a.then((value)=>{
+        console.log(value);
+    })
+
+
+
+    
+    // myFunction.then((x)=>{ // if we remove async than it give error 
+    //     alert(x);
+    // })
+</script>
+</html>
